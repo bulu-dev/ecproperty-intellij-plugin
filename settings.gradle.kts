@@ -1,1 +1,1 @@
-rootProject.name = "ecproperty"
+rootProject.name = "ecproperty-completion"

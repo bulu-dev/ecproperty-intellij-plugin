@@ -15,7 +15,9 @@
     <description><![CDATA[
     <h1>ECProperty Completion</h1>
 
-    <p>Enhance your development workflow with <b>fully customizable code completion</b> for *.property file type. 
+    <img src="https://github.com/bulu-dev/ecproperty-intellij-plugin/blob/main/public/Usecase.gif?raw=true" alt="Upload and use custom properties for auto-complete" width="100%" height="100%" loop=infinite>
+
+    <p>Enhance your development workflow with <b>fully customizable code completion</b> for *.property file type.
     This plugin allows you to define your own property-sets and get intelligent suggestions as you type.</p>
 
     <h2>Key Features:</h2>
@@ -47,6 +49,8 @@
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
     <resource-bundle>messages.MyMessageBundle</resource-bundle>
 
     <!-- Extensions defined by the plugin.
