@@ -1,0 +1,13 @@
+[
+	{
+        "name": "management.appoptics.metrics.export.description.less"
+    },
+	{
+        "name": "management.appoptics.metrics.export.api-token",
+        "description": "AppOptics API token."
+    },
+    {
+        "name": "management.appoptics.metrics.export.batch-size",
+        "description": "Number of measurements per request to use for this backend."
+    }
+]
