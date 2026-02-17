@@ -2,6 +2,12 @@
 
 ![Static Badge](https://img.shields.io/badge/plugin%20-%20intellij?label=intellij)
 
+<img src="https://github.com/bulu-dev/ecproperty-intellij-plugin/blob/main/public/Usecase.gif?raw=true" alt="Upload and use custom properties for auto-complete" width="100%" height="100%" loop=infinite>
+
+> [!NOTE]
+> If the GIF doesn't play, reload the page.. []:_:[]
+
+
 ## Introduction & Purpose
 
 A IntelliJ IDEA plugin that enables developer-defined, 
@@ -28,7 +34,7 @@ plugin expects from you:
 ]
 ```
 
-> [NOTE]
+> [!NOTE]
 > Description is optional, you can provide any json-file with the format about and it should work.
 
 ## How to use
