@@ -19,10 +19,20 @@
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
-    <depends>com.intellij.modules.platform</depends>
+    <resource-bundle>messages.MyMessageBundle</resource-bundle>
 
     <!-- Extensions defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
+
+        <projectConfigurable id="dev.sulan.argumentedcompletion.settings"
+                             instance="dev.sulan.ecproperty.settings.PropertySettingsConfigurable"
+                             key="settings.display.name" order="first" />
+
+        <notificationGroup id="ECProperty Group"
+                           displayType="BALLOON"
+                           toolWindowId="Messages" bundle="messages.MyMessageBundle"
+                           key="notification.group.custom.completion.group"/>
+
     </extensions>
 </idea-plugin>
