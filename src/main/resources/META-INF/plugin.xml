@@ -25,6 +25,9 @@
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
 
+        <completion.contributor language="any"
+                                implementationClass="dev.sulan.ecproperty.completion.SimplePropertyCompletionContributor" order="first"/>
+
         <projectConfigurable id="dev.sulan.argumentedcompletion.settings"
                              instance="dev.sulan.ecproperty.settings.PropertySettingsConfigurable"
                              key="settings.display.name" order="first" />
