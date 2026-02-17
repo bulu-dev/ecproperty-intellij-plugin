@@ -13,6 +13,7 @@ import com.intellij.openapi.util.NlsSafe
 import com.intellij.openapi.util.TextRange
 import com.intellij.patterns.PlatformPatterns
 import com.intellij.util.ProcessingContext
+import dev.sulan.argumentedcompletion.helper.PropertyCache
 import dev.sulan.ecproperty.model.FileTypeConfig
 import dev.sulan.ecproperty.model.Property
 import dev.sulan.ecproperty.settings.PropertySettingsService
@@ -42,23 +43,22 @@ class SimplePropertyCompletionContributor : CompletionContributor() {
                     var result = initialResult.withPrefixMatcher(PlainPrefixMatcher(previousUserInput))
                     val addedSuggestions = mutableSetOf<String>()
 
-                    val matchingConfigs = getAllFileTypeConfigs(parameters) ?: return;
-                    val uploadedProperties = matchingConfigs.flatMap { it.properties }.distinct()
+                    val project = parameters.editor.project ?: return
+                    val propertyTrie = PropertyCache.getTrie(project)
+                    val matchedProperties = propertyTrie.findByPrefix(previousUserInput)
 
-                    uploadedProperties.forEach { prop ->
-                        if (prop.name.startsWith(previousUserInput)) {
-                            val remaining = prop.name.substring(previousUserInput.length)
-                            val nextDot = remaining.indexOf('.')
-                            val isPartial = nextDot != -1
+                    matchedProperties.forEach { prop ->
+                        val remaining = prop.name.substring(previousUserInput.length)
+                        val nextDot = remaining.indexOf('.')
+                        val isPartial = nextDot != -1
 
-                            val suggestion = if (isPartial) {
-                                previousUserInput + remaining.substring(0, nextDot + 1)
-                            } else {
-                                prop.name
-                            }
-
-                            addSuggestion(addedSuggestions, suggestion, isPartial, prop, result)
+                        val suggestion = if (isPartial) {
+                            previousUserInput + remaining.substring(0, nextDot + 1)
+                        } else {
+                            prop.name
                         }
+
+                        addSuggestion(addedSuggestions, suggestion, isPartial, prop, result)
                     }
                 }
             }
@@ -126,17 +126,6 @@ class SimplePropertyCompletionContributor : CompletionContributor() {
                 editor.document.insertString(offset, "=")
                 editor.caretModel.moveToOffset(offset + 1)
             }
-    }
-
-    private fun getAllFileTypeConfigs(parameters: CompletionParameters): List<FileTypeConfig>? {
-        val project = parameters.editor.project ?: return null
-        val state = PropertySettingsService.getInstance(project).state
-        val fileName = parameters.originalFile.name
-        val configurations = state.configs.filter { fileName.endsWith(".${it.extension}") }
-
-        // In case the user doesn't have uploaded any properties for auto-completion.
-        if (configurations.isEmpty()) return null
-        return configurations
     }
 
     private fun getPreviousUserInput(parameters: CompletionParameters): @NlsSafe String {
