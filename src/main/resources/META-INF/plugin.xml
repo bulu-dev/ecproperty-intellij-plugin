@@ -5,7 +5,7 @@
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-name -->
-    <name>ECProperty</name>
+    <name>ECProperty Completion</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
     <vendor url="https://www.sulan.dev">Sulan Abuabakrov</vendor>
@@ -13,9 +13,37 @@
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-description -->
     <description><![CDATA[
-        Enter short description for your plugin here.<br>
-        <em>most HTML tags may be used</em>
-    ]]></description>
+    <h1>ECProperty Completion</h1>
+
+    <p>Enhance your development workflow with <b>fully customizable code completion</b> for *.property file type. 
+    This plugin allows you to define your own property-sets and get intelligent suggestions as you type.</p>
+
+    <h2>Key Features:</h2>
+    <ul>
+        <li><b>Hierarchical Completion:</b> Supports "Dot-Notation" (e.g., <code>database.</code> &rarr; <code>database.url</code>) with automatic triggering of the next suggestion level.</li>
+        <li><b>Smart Performance:</b> Powered by a <b>Trie (Prefix Tree)</b> data structure for lightning-fast lookups, even with thousands of properties.</li>
+        <li><b>Rich Documentation:</b> Display custom descriptions and default values directly in the completion popup.</li>
+    </ul>
+
+    <h2>How to get started:</h2>
+    <ol>
+        <li>Go to <b>Settings | Other Settings | ECProperty Completion.</li>
+        <li>Add a new row.</li>
+        <li><b>Upload:</b> Double-click the "Properties" column or use the <b>Upload Icon</b> to import a JSON file.</li>
+    </ol>
+
+    <h2>JSON Format Example:</h2>
+    <pre>
+[
+  {
+    "name": "database.url",
+    "description": "JDBC Connection String"
+  }
+]
+    </pre>
+
+    <p><i>Note: Suggestions are labeled as <b>"[C]"</b>.</i></p>
+]]></description>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
