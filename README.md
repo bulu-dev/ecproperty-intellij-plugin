@@ -12,7 +12,7 @@
 
 A IntelliJ IDEA plugin that enables developer-defined, 
 hierarchical code completion. Stop searching through documentation and let the IDE suggest 
-your custom property keys, descriptions, and default values as you type.
+your custom property keys and descriptions as you type.
 
 You miss some properties, when you work on your projects? 
 Define them once, upload them and let the IDE suggest them for you. Hereafter you see the JSON-structure the
